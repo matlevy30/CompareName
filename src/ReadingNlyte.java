@@ -37,6 +37,7 @@ public class ReadingNlyte extends Reading {
 			if (filterLocation(line) && filterType(line)) {
 				if (blankTag(line) || blankSerial(line)) {
 					lines.add(new NlyteSheet(line));
+					
 				}
 			}
 		}
