@@ -6,7 +6,7 @@ public abstract class Reading {
 	protected ArrayList<Sheet> lines;
 	protected String[] header;
 	
-	
+	//Gives back the list of all Nlyte document
 	public ArrayList<Sheet> getList() {
 		return lines;
 	}
