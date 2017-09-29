@@ -10,11 +10,11 @@ public class WriteCSV {
 	private static final String COMMA_DELIMITER = ",";
 	private static final String NEW_LINE_SEPARATOR = "\n";
    
-	private String[] header = {"Name", "Cabinate"};
-	private ArrayList<Sheet> list;
+	private String[] header = {"Name", "Cabinate","Pod","Row"};
+	private ArrayList<UpdateSheet> list;
 	private String fileName;
 
-	public WriteCSV(String[] header, ArrayList<Sheet> list, String fileName) {
+	public WriteCSV(String[] header, ArrayList<UpdateSheet> list, String fileName) {
 		
 		this.list = list;
 		this.fileName = fileName;

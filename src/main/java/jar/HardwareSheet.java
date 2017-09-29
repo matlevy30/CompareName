@@ -6,55 +6,43 @@ public class HardwareSheet extends Sheet {
 		super(values);
 	}
 	public String HostName1() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[4].toUpperCase().trim();
 	}
 	public String Cabinate1() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[3].toUpperCase().trim();
 	}
 	
 	public String HostName2() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[14].toUpperCase().trim();
 	}
 	
 	public String Cabinate2() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[15].toUpperCase().trim();
 	}
 	
 	public String Hop1() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[6].toUpperCase().trim();
 	}
 	public String Hop2() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[7].toUpperCase().trim();
 	}
 	public String Hop3() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[8].toUpperCase().trim();
 	}
 	public String Hop4() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[9].toUpperCase().trim();
 	}
 	public String Hop5() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[10].toUpperCase().trim();
 	}
 	public String Hop6() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[11].toUpperCase().trim();
 	}
 	public String Hop7() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[12].toUpperCase().trim();
 	}
 	public String Hop8() {
-		// TODO Auto-generated method stub
-		return null;
+		return values[13].toUpperCase().trim();
 	}
 	public String CabPanel(String panel) {
 		return panel.substring(0,5);

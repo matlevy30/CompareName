@@ -13,7 +13,7 @@ public class HardwareReading extends Reading {
 	private XSSFSheet reader;
 
 	public HardwareReading() throws IOException {
-		String fileName = "src/Hardware.xlsx";
+		String fileName = "src/OCE Hardware-Network Master Log 2017.xlsx";
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(new FileInputStream(fileName));
 		reader = myWorkBook.getSheetAt(0);
 		myWorkBook.close();
@@ -38,56 +38,6 @@ public class HardwareReading extends Reading {
 			String[] line = cellIterator(cellIterator);
 			lines.add(new HardwareSheet(line));
 		}
-	}
-
-	// Filtering Blank and N/A Serial Number
-	@SuppressWarnings("unused")
-	private boolean blankSerial(String[] line) {
-		if (line[3].equals("") || line[3].equals("N/A")) {
-			return false;
-		}
-		return true;
-	}
-
-	// Filtering Blank and N/A Asset Tag
-	@SuppressWarnings("unused")
-	private boolean blankTag(String[] line) {
-		String tag = line[4].toUpperCase();
-		if (tag.equals("") || tag.equals("N/A") || tag.contains("CHILD")) {
-			return false;
-		}
-
-		return true;
-	}
-
-	// Filtering Type
-	@SuppressWarnings("unused")
-	private boolean filterType(String[] line) {
-		if (line[10].equals("Server") || line[10].equals("Cabinet") || line[10].equals("Chassis")
-				|| line[10].equals("Peripheral") || line[10].equals("KVMSwitch") || line[10].equals("Network")
-				|| line[10].equals("Powerstrip")) {
-			return true;
-		}
-		return false;
-	}
-
-	// Filtering Locations
-	protected boolean filterLocation(String[] line) {
-		// OCC Locations Rooms
-		if (line[7].contains("Highlands Ranch")) {
-			if (line[7].contains("Data Hall") || line[7].contains("Floor")) {
-				return true;
-			}
-		}
-		// OCE Locations Rooms
-		else if (line[7].contains("Ashburn")) {
-			if (line[7].contains("POD ")) {
-				return true;
-			}
-		} else if (line[7].contains("Singapore")) {
-			return true;
-		}
-		return false;
 	}
 
 	// Getting the header of the file
@@ -120,6 +70,11 @@ public class HardwareReading extends Reading {
 			++i;
 		}
 		return values;
+	}
+
+	@Override
+	protected boolean filterLocation(String[] line) {
+		return false;
 	}
 
 }

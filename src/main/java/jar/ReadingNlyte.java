@@ -13,7 +13,7 @@ public class ReadingNlyte extends Reading {
 	private XSSFSheet reader;
 
 	public ReadingNlyte() throws IOException {
-		String fileName = "src/Nlyte_Assets.xlsx";
+		String fileName = "src/Asset_Asset.xlsx";
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(new FileInputStream(fileName));
 		reader = myWorkBook.getSheetAt(0);
 		myWorkBook.close();
@@ -37,37 +37,15 @@ public class ReadingNlyte extends Reading {
 			Iterator<Cell> cellIterator = row.cellIterator();
 			String[] line = cellIterator(cellIterator);
 			if (filterLocation(line) && filterType(line)) {
-				if (blankTag(line) || blankSerial(line)) {
 					lines.add(new NlyteSheet(line));
 					
-				}
 			}
 		}
 	}
-
-	// Filtering Blank and N/A Serial Number
-	private boolean blankSerial(String[] line) {
-		if (line[3].equals("") || line[3].equals("N/A")) {
-			return false;
-		}
-		return true;
-	}
-
-	// Filtering Blank and N/A Asset Tag
-	private boolean blankTag(String[] line) {
-		String tag = line[4].toUpperCase();
-		if (tag.equals("") || tag.equals("N/A") || tag.contains("CHILD")) {
-			return false;
-		}
-
-		return true;
-	}
-
 	// Filtering Type
 	private boolean filterType(String[] line) {
 		if (line[10].equals("Server") || line[10].equals("Cabinet") || line[10].equals("Chassis")
-				|| line[10].equals("Peripheral") || line[10].equals("KVMSwitch") || line[10].equals("Network")
-				|| line[10].equals("Powerstrip")) {
+				|| line[10].equals("Peripheral") || line[10].equals("KVMSwitch") || line[10].equals("Network")) {
 			return true;
 		}
 		return false;

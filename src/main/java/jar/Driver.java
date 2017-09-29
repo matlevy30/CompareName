@@ -2,10 +2,10 @@ package main.java.jar;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Driver {
-	// REMEMBER TO CHAGE , TO . for the UAPM file and use txt to do this change
-	public static ArrayList<Sheet> missingNames;
+	public static ArrayList<UpdateSheet> missingNames;
 
 	public static void main(String[] args) throws IOException {
 		// Reading Nlyte XLSX file
@@ -32,15 +32,12 @@ public class Driver {
 
 	// Comparing Tags
 	public static void compareName(ArrayList<Sheet> nlyte, ArrayList<Sheet> hrdwr) {
-		// Putting a copy of all uapm to missingTags
-		// missingTags.addAll(uapm);
-		missingNames = hrdwr; // to find duplicates
 		// If tag was found or not
 		boolean[] found = { false, false, false, false, false, false, false, false, false, false };
 		for (int i = 0; i != hrdwr.size(); ++i) {
+			HardwareSheet hrdw = (HardwareSheet) hrdwr.get(i);
 			for (int j = 0; j != nlyte.size(); ++j) {
 				// If the name is not found add it to the list
-				HardwareSheet hrdw = (HardwareSheet) hrdwr.get(i);
 				if (hrdw.HostName1().equals(nlyte.get(j).HostName())) {
 					found[0] = true;
 				}
@@ -74,46 +71,93 @@ public class Driver {
 
 			}
 			// Adding to List
-			addingList(found);
+			missingNames.addAll(addingList(found,hrdw));
 			found = setFalse(found);
 		}
 	}
 
-	private static void addingList(boolean[] found) {
+	private static List<UpdateSheet> addingList(boolean[] found , HardwareSheet hrdw) {
 		//String[] sb = new String[4];
+		String[] values = new String[4];
+		List<UpdateSheet> update = new ArrayList<>();
 		for (int i = 0; i != found.length; ++i) {
-			if (found[0] == true) {
+			if (found[0] == false) {
+				values[0] = hrdw.HostName1();
+				values[1] = hrdw.Cabinate1();
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 				
 			}
-			if (found[1] == true) {
+			if (found[1] == false) {
+				values[0] = hrdw.HostName2();
+				values[1] = hrdw.Cabinate2();
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 
 			}
-			if (found[2] == true) {
+			if (found[2] == false) {
+				values[0] = hrdw.Hop1();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
+			}
+			if (found[3] == false) {
+				values[0] = hrdw.Hop2();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
+			}
+			if (found[4] == false) {
+				values[0] = hrdw.Hop3();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 
 			}
-			if (found[3] == true) {
+			if (found[5] == false) {
+				values[0] = hrdw.Hop4();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 
 			}
-			if (found[4] == true) {
+			if (found[6] == false) {
+				values[0] = hrdw.Hop5();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 
 			}
-			if (found[5] == true) {
-
+			if (found[7] == false) {
+				values[0] = hrdw.Hop6();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 			}
-			if (found[6] == true) {
-
-			}
-			if (found[7] == true) {
-
-			}
-			if (found[8] == true) {
-
+			if (found[8] == false) {
+				values[0] = hrdw.Hop7();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 			}
 			if (found[9] == true) {
-
+				values[0] = hrdw.Hop8();
+				values[1] = hrdw.CabPanel(values[0]);
+				values[2] = hrdw.Pod(values[1]);
+				values[3] = hrdw.Row(values[1]);
+				update.add(new UpdateSheet(values));
 			}
 		}
-
+		return update;
 	}
 
 	private static boolean[] setFalse(boolean[] v) {
