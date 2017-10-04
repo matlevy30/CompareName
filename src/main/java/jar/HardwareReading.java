@@ -19,15 +19,12 @@ public class HardwareReading extends Reading {
 		myWorkBook.close();
 		lines = new ArrayList<Sheet>();
 		// Header Fields
-		header = new String[12];
+		header = new String[21];
 	}
 
 	public void readLines() throws IOException {
 		// Get iterator to all the rows in current sheet
 		Iterator<Row> rowIterator = reader.iterator();
-		// Blank Lines
-		rowIterator.next();
-		rowIterator.next();
 		// Header
 		createHeader(rowIterator.next());
 		while (rowIterator.hasNext()) {
@@ -48,9 +45,9 @@ public class HardwareReading extends Reading {
 	}
 
 	private String[] cellIterator(Iterator<Cell> cellIterator) {
-		String[] values = new String[12];
+		String[] values = new String[21];
 		int i = 0;
-		while (cellIterator.hasNext()) {
+		while (cellIterator.hasNext() && i != 21) {
 			// Read each column cell
 			Cell cell = cellIterator.next();
 

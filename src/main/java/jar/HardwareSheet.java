@@ -5,53 +5,95 @@ public class HardwareSheet extends Sheet {
 	public HardwareSheet(String[] values) {
 		super(values);
 	}
+
 	public String HostName1() {
 		return values[4].toUpperCase().trim();
 	}
+
 	public String Cabinate1() {
 		return values[3].toUpperCase().trim();
 	}
-	
+
 	public String HostName2() {
 		return values[14].toUpperCase().trim();
 	}
-	
+
 	public String Cabinate2() {
-		return values[15].toUpperCase().trim();
+		return values[16].toUpperCase().trim();
 	}
-	
+
 	public String Hop1() {
-		return values[6].toUpperCase().trim();
+		String value = CabPanel(values[6].toUpperCase().trim());
+		return value;
 	}
+
 	public String Hop2() {
-		return values[7].toUpperCase().trim();
+		String value = CabPanel(values[7].toUpperCase().trim());
+		return value;
 	}
+
 	public String Hop3() {
-		return values[8].toUpperCase().trim();
+		String value = CabPanel(values[8].toUpperCase().trim());
+		return value;
 	}
+
 	public String Hop4() {
-		return values[9].toUpperCase().trim();
+		String value = CabPanel(values[9].toUpperCase().trim());
+		return value;
 	}
+
 	public String Hop5() {
-		return values[10].toUpperCase().trim();
+		String value = CabPanel(values[10].toUpperCase().trim());
+		return value;
 	}
+
 	public String Hop6() {
-		return values[11].toUpperCase().trim();
+		String value = CabPanel(values[11].toUpperCase().trim());
+		return value;
 	}
+
 	public String Hop7() {
-		return values[12].toUpperCase().trim();
+		String value = CabPanel(values[12].toUpperCase().trim());
+		return value;
 	}
+
 	public String Hop8() {
-		return values[13].toUpperCase().trim();
+		String value = CabPanel(values[13].toUpperCase().trim());
+		return value;
 	}
-	public String CabPanel(String panel) {
-		return panel.substring(0,5);
+
+	private String CabPanel(String panel) {
+		String v = "";
+		if (panel.contains(".") && panel.length() >= 9) {
+			v = panel.substring(0, 9);
+		} else {
+			v = panel;
+		}
+		
+		return v;
 	}
-	public  String Pod(String value) {
+
+	public String Cabinate(String panel) {
+		//System.out.print(panel);
+		if (panel.contains(".")) {
+			//System.out.println("  " + panel.substring(0, 6));
+			return panel.substring(0, 6);
+		}
+		
+		return "No CAB";
+	}
+
+	public String Pod(String value) {
+		//System.out.println(value);
 		return Character.toString(value.charAt(0));
 	}
-	public String Row(String value) { 
-		return value.substring(3, 5);
+
+	public String Row(String value) {
+		
+		if(value.length() >= 5) {
+			return value.substring(3, 5);
+		}
+		return value;
 	}
 
 }
