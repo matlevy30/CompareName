@@ -84,14 +84,13 @@ public class HardwareSheet extends Sheet {
 	}
 
 	public String Pod(String value) {
-		//System.out.println(value);
 		return Character.toString(value.charAt(0));
 	}
 
 	public String Row(String value) {
 		
-		if(value.length() >= 5) {
-			return value.substring(3, 5);
+		if(value.length() >= 6) {
+			return value.substring(3, 6);
 		}
 		return value;
 	}
