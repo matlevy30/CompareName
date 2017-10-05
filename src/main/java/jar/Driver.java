@@ -94,7 +94,7 @@ public class Driver {
 		String[] values = new String[4];
 		List<UpdateSheet> update = new ArrayList<>();
 		if (found[0] == false) {
-			if (!hrdw.HostName1().equals("BLANK") && !hrdw.HostName1().contains("PORT")) {
+			if (!hrdw.HostName1().equals("-") && !hrdw.HostName1().contains("PORT")) {
 				values[0] = hrdw.HostName1();
 				// System.out.print(values[0].length());
 				values[1] = hrdw.Cabinate1();
@@ -106,7 +106,7 @@ public class Driver {
 
 		}
 		if (found[1] == false) {
-			if (!hrdw.HostName2().equals("BLANK")&& !hrdw.HostName2().contains("PORT")) {
+			if (!hrdw.HostName2().equals("-")&& !hrdw.HostName2().contains("PORT")) {
 				values[0] = hrdw.HostName2();
 				values[1] = hrdw.Cabinate2();
 				values[2] = hrdw.Pod(values[1]);
@@ -116,7 +116,7 @@ public class Driver {
 
 		}
 		if (found[2] == false) {
-			if (!(hrdw.Hop1().equals("BLANK")) && !(hrdw.Hop1().equals("DIRECT")) && !(hrdw.Hop1().contains("PORT"))) {
+			if (!(hrdw.Hop1().equals("-")) && !(hrdw.Hop1().equals("DIRECT")) && !(hrdw.Hop1().contains("PORT"))) {
 				
 				values[0] = hrdw.Hop1();
 				values[1] = hrdw.Cabinate(values[0]);
@@ -127,7 +127,7 @@ public class Driver {
 
 		}
 		if (found[3] == false) {
-			if (!hrdw.Hop2().equals("BLANK") && !hrdw.Hop2().contains("PORT")) {
+			if (!hrdw.Hop2().equals("-") && !hrdw.Hop2().contains("PORT")) {
 				values[0] = hrdw.Hop2();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);
@@ -137,7 +137,7 @@ public class Driver {
 
 		}
 		if (found[4] == false) {
-			if (!hrdw.Hop3().equals("BLANK") && !hrdw.Hop3().contains("PORT")) {
+			if (!hrdw.Hop3().equals("-") && !hrdw.Hop3().contains("PORT")) {
 				values[0] = hrdw.Hop3();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);
@@ -147,7 +147,7 @@ public class Driver {
 
 		}
 		if (found[5] == false) {
-			if (!hrdw.Hop4().equals("BLANK") && !hrdw.Hop4().contains("PORT")) {
+			if (!hrdw.Hop4().equals("-") && !hrdw.Hop4().contains("PORT")) {
 				values[0] = hrdw.Hop4();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);
@@ -157,7 +157,7 @@ public class Driver {
 
 		}
 		if (found[6] == false) {
-			if (!hrdw.Hop5().equals("BLANK") && !hrdw.Hop5().contains("PORT")) {
+			if (!hrdw.Hop5().equals("-") && !hrdw.Hop5().contains("PORT")) {
 				values[0] = hrdw.Hop5();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);
@@ -167,7 +167,7 @@ public class Driver {
 
 		}
 		if (found[7] == false) {
-			if (!hrdw.Hop6().equals("BLANK") && !hrdw.Hop6().contains("PORT")) {
+			if (!hrdw.Hop6().equals("-") && !hrdw.Hop6().contains("PORT")) {
 				values[0] = hrdw.Hop6();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);
@@ -177,7 +177,7 @@ public class Driver {
 
 		}
 		if (found[8] == false) {
-			if (!hrdw.Hop7().equals("BLANK") && !hrdw.Hop7().contains("PORT")) {
+			if (!hrdw.Hop7().equals("-") && !hrdw.Hop7().contains("PORT")) {
 				values[0] = hrdw.Hop7();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);
@@ -187,7 +187,7 @@ public class Driver {
 
 		}
 		if (found[9] == false) {
-			if (!hrdw.Hop8().equals("BLANK") && !hrdw.Hop8().contains("PORT")) {
+			if (!hrdw.Hop8().equals("-") && !hrdw.Hop8().contains("PORT")) {
 				values[0] = hrdw.Hop8();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);

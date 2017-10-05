@@ -36,7 +36,7 @@ public class ReadingNlyte extends Reading {
 			// For each row, iterate through each columns
 			Iterator<Cell> cellIterator = row.cellIterator();
 			String[] line = cellIterator(cellIterator);
-			if (filterLocation(line) && filterType(line)) {
+			if (filterType(line)) {
 					lines.add(new NlyteSheet(line));
 					
 			}
@@ -52,6 +52,7 @@ public class ReadingNlyte extends Reading {
 	}
 
 	// Filtering Locations
+	@Override
 	protected boolean filterLocation(String[] line) {
 		// OCC Locations Rooms
 		if (line[7].contains("Highlands Ranch")) {

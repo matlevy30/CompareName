@@ -76,7 +76,7 @@ public class HardwareSheet extends Sheet {
 	public String Cabinate(String panel) {
 		//System.out.print(panel);
 		if (panel.contains(".")) {
-			//System.out.println("  " + panel.substring(0, 6));
+			
 			return panel.substring(0, 6);
 		}
 		
