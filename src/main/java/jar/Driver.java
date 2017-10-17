@@ -102,6 +102,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -112,6 +113,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -123,6 +125,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -133,6 +136,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -143,6 +147,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -153,6 +158,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -163,6 +169,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -173,6 +180,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -183,6 +191,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
@@ -193,6 +202,7 @@ public class Driver {
 				values[2] = hrdw.Pod(values[1]);
 				values[3] = hrdw.Row(values[1]);
 				update.add(new UpdateSheet(values));
+				values = new String[4];
 			}
 
 		}
