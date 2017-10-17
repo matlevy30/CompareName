@@ -35,7 +35,7 @@ public class Driver {
 		WriteCSV write = new WriteCSV(hostNameHeader, missingNames, "Missing.csv");
 		write.wirte();
 
-		write = new WriteCSV(cabinateHeader, missingNames, "Cabinate.csv");
+		write = new WriteCSV(cabinateHeader, cabinates, "Cabinate.csv");
 		write.wirte();
 	}
 
