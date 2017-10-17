@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Driver {
+	private static final String[] hostNameHeader = { "Name", "Cabinet", "Pod", "Row" };
+	private static final String[] cabinateHeader = { "Name", "Cabinet Nlyte", "Cabinet Hardware", "Pod", "Row" };
 	public static ArrayList<UpdateSheet> missingNames;
+	public static ArrayList<UpdateSheet> cabinates;
 
 	public static void main(String[] args) throws IOException {
 		// Reading Nlyte XLSX file
@@ -21,12 +24,18 @@ public class Driver {
 		// Missing Asset Tags
 		missingNames = new ArrayList<>();
 
+		// No match Cab
+		cabinates = new ArrayList<>();
+
 		// =======================================================================
 		// Comparing Asset Tag Info for both Nlyte -> UAPM
 		compareName(NlyteInfo, HardwareInfo);
 		// =======================================================================
 		// Creating CSV files all of the lists
-		WriteCSV write = new WriteCSV(uapm.getHeader(), missingNames, "Missing.csv");
+		WriteCSV write = new WriteCSV(hostNameHeader, missingNames, "Missing.csv");
+		write.wirte();
+
+		write = new WriteCSV(cabinateHeader, missingNames, "Cabinate.csv");
 		write.wirte();
 	}
 
@@ -34,6 +43,7 @@ public class Driver {
 	public static void compareName(ArrayList<Sheet> nlyte, ArrayList<Sheet> hrdwr) {
 		// If tag was found or not
 		boolean[] found = { false, false, false, false, false, false, false, false, false, false };
+		String[] cabValues = new String[5];
 		for (int i = 0; i != hrdwr.size(); ++i) {
 			HardwareSheet hrdw = (HardwareSheet) hrdwr.get(i);
 			for (int j = 0; j != nlyte.size(); ++j) {
@@ -41,9 +51,28 @@ public class Driver {
 
 				if (hrdw.HostName1().equals(nlyte.get(j).HostName())) {
 					found[0] = true;
+					if (!hrdw.Cabinate1().equals(nlyte.get(i).cabinateName())) {
+						cabValues[0] = nlyte.get(j).HostName();
+						cabValues[1] = nlyte.get(j).cabinateName();
+						cabValues[2] = hrdw.Cabinate1();
+						cabValues[3] = hrdw.Pod(cabValues[2]);
+						cabValues[4] = hrdw.Row(cabValues[2]);
+						cabinates.add(new UpdateSheet(cabValues));
+						cabValues = new String[5];
+						
+					}
 				}
 				if (hrdw.HostName2().equals(nlyte.get(j).HostName())) {
 					found[1] = true;
+					if (!hrdw.Cabinate2().equals(nlyte.get(i).cabinateName())) {
+						cabValues[0] = nlyte.get(j).HostName();
+						cabValues[1] = nlyte.get(j).cabinateName();
+						cabValues[2] = hrdw.Cabinate2();
+						cabValues[3] = hrdw.Pod(cabValues[2]);
+						cabValues[4] = hrdw.Row(cabValues[2]);
+						cabinates.add(new UpdateSheet(cabValues));
+						cabValues = new String[5];
+					}
 				}
 				if (hrdw.Hop1().equals(nlyte.get(j).HostName())) {
 					found[2] = true;
@@ -107,7 +136,7 @@ public class Driver {
 
 		}
 		if (found[1] == false) {
-			if (!hrdw.HostName2().equals("-")&& !hrdw.HostName2().contains("PORT")) {
+			if (!hrdw.HostName2().equals("-") && !hrdw.HostName2().contains("PORT")) {
 				values[0] = hrdw.HostName2();
 				values[1] = hrdw.Cabinate2();
 				values[2] = hrdw.Pod(values[1]);
@@ -119,7 +148,6 @@ public class Driver {
 		}
 		if (found[2] == false) {
 			if (!(hrdw.Hop1().equals("-")) && !(hrdw.Hop1().equals("DIRECT")) && !(hrdw.Hop1().contains("PORT"))) {
-				
 				values[0] = hrdw.Hop1();
 				values[1] = hrdw.Cabinate(values[0]);
 				values[2] = hrdw.Pod(values[1]);

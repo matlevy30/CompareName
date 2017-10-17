@@ -94,5 +94,9 @@ public class HardwareSheet extends Sheet {
 		}
 		return value;
 	}
-
+	
+	//Method not used
+	public String cabinateName() {
+		return "Nothing here";
+	}
 }

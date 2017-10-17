@@ -28,6 +28,8 @@ public abstract class Sheet {
 	public String[] getLine() {
 		return values;
 	}
+	
+	public abstract String cabinateName();
 
 	public void setSerial(String s) {
 		throw new UnsupportedOperationException("Can't do this with Hardware sheet");

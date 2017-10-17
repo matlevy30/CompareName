@@ -35,5 +35,10 @@ public class NlyteSheet extends Sheet {
 	public String getNumber() {
 		return values[1].trim();
 	}
+	
+	@Override
+	public String cabinateName() {
+		return values[8].trim();
+	}
 
 }

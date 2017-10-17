@@ -10,7 +10,7 @@ public class UpdateSheet extends Sheet {
 		return values[0].toUpperCase().trim();
 	}
 
-	public String getCab() {
+	public String cabinateName() {
 		return values[1].toUpperCase().trim();
 	}
 

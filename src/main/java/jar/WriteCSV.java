@@ -10,15 +10,14 @@ public class WriteCSV {
 	private static final String COMMA_DELIMITER = ",";
 	private static final String NEW_LINE_SEPARATOR = "\n";
    
-	private String[] header = {"Name", "Cabinate","Pod","Row"};
+	private String[] header;
 	private ArrayList<UpdateSheet> list;
 	private String fileName;
 
 	public WriteCSV(String[] header, ArrayList<UpdateSheet> list, String fileName) {
-		
 		this.list = list;
 		this.fileName = fileName;
-		
+		this.header = header;
 	}
 
 	public void wirte() {
