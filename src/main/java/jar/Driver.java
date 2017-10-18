@@ -44,6 +44,7 @@ public class Driver {
 		// If tag was found or not
 		boolean[] found = { false, false, false, false, false, false, false, false, false, false };
 		String[] cabValues = new String[5];
+		List<UpdateSheet> cabs = new ArrayList<>();
 		for (int i = 0; i != hrdwr.size(); ++i) {
 			HardwareSheet hrdw = (HardwareSheet) hrdwr.get(i);
 			for (int j = 0; j != nlyte.size(); ++j) {
@@ -51,26 +52,26 @@ public class Driver {
 
 				if (hrdw.HostName1().equals(nlyte.get(j).HostName())) {
 					found[0] = true;
-					if (!hrdw.Cabinate1().equals(nlyte.get(i).cabinateName())) {
+					if (!(hrdw.Cabinate1().equals(nlyte.get(j).cabinateName()))) {
 						cabValues[0] = nlyte.get(j).HostName();
 						cabValues[1] = nlyte.get(j).cabinateName();
 						cabValues[2] = hrdw.Cabinate1();
 						cabValues[3] = hrdw.Pod(cabValues[2]);
 						cabValues[4] = hrdw.Row(cabValues[2]);
-						cabinates.add(new UpdateSheet(cabValues));
+						cabs.add(new UpdateSheet(cabValues));
 						cabValues = new String[5];
 						
 					}
 				}
 				if (hrdw.HostName2().equals(nlyte.get(j).HostName())) {
 					found[1] = true;
-					if (!hrdw.Cabinate2().equals(nlyte.get(i).cabinateName())) {
+					if (!(hrdw.Cabinate2().equals(nlyte.get(j).cabinateName()))) {
 						cabValues[0] = nlyte.get(j).HostName();
 						cabValues[1] = nlyte.get(j).cabinateName();
 						cabValues[2] = hrdw.Cabinate2();
 						cabValues[3] = hrdw.Pod(cabValues[2]);
 						cabValues[4] = hrdw.Row(cabValues[2]);
-						cabinates.add(new UpdateSheet(cabValues));
+						cabs.add(new UpdateSheet(cabValues));
 						cabValues = new String[5];
 					}
 				}
@@ -101,20 +102,24 @@ public class Driver {
 			}
 			// Adding to List
 			List<UpdateSheet> values = addingList(found, hrdw);
-			boolean f = false;
-			for (int z = 0; z != values.size(); ++z) {
-				for (int k = 0; k != missingNames.size(); ++k) {
-					if (values.get(z).HostName().equals(missingNames.get(k).HostName())) {
-						f = true;
-					}
-				}
-				if (!f) {
-					missingNames.add(values.get(z));
-				}
-				f = false;
-			}
-
+			addWithoutDuplicates(values, missingNames);
+			addWithoutDuplicates(cabs, cabinates);
 			found = setFalse(found);
+		}
+	}
+
+	private static void addWithoutDuplicates(List<UpdateSheet> values , ArrayList<UpdateSheet> list) {
+		boolean f = false;
+		for (int z = 0; z != values.size(); ++z) {
+			for (int k = 0; k != list.size(); ++k) {
+				if (values.get(z).HostName().equals(list.get(k).HostName())) {
+					f = true;
+				}
+			}
+			if (!f) {
+				list.add(values.get(z));
+			}
+			f = false;
 		}
 	}
 
