@@ -64,22 +64,26 @@ public class HardwareSheet extends Sheet {
 
 	private String CabPanel(String panel) {
 		String v = "";
-		if (panel.contains(".") && panel.length() >= 9) {
+		if (panel.contains("ER")) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(panel.substring(0,2));
+			sb.append(panel.charAt(3));
+			sb.append(panel.substring(4,11));
+			return sb.toString();	
+		} else if (panel.contains(".") && panel.length() >= 9) {
 			v = panel.substring(0, 9);
 		} else {
 			v = panel;
 		}
-		
 		return v;
 	}
 
 	public String Cabinate(String panel) {
-		//System.out.print(panel);
+		// System.out.print(panel);
 		if (panel.contains(".")) {
-			
 			return panel.substring(0, 6);
 		}
-		
+
 		return "No CAB";
 	}
 
@@ -88,14 +92,14 @@ public class HardwareSheet extends Sheet {
 	}
 
 	public String Row(String value) {
-		
-		if(value.length() >= 6) {
+
+		if (value.length() >= 6) {
 			return value.substring(3, 6);
 		}
 		return value;
 	}
-	
-	//Method not used
+
+	// Method not used
 	public String cabinateName() {
 		return "Nothing here";
 	}
